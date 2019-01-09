@@ -43,4 +43,9 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+    config.middleware.use Clearance::BackDoor
+
+    #Clearance includes middleware that avoids wasting time spent visiting, 
+    #loading, and submitting the sign in form. It instead signs in the designated user directly. The speed increase can be substantial.
 end
