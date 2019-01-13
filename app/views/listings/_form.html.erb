@@ -1,0 +1,18 @@
+<%= simple_form_for(@listing, html: { class: 'form-inline' })do |f| %>
+	<%= f.input :name, label: "Listing Title" %>
+	<%= f.input :description %>
+	<%= f.input :address %>
+	<%= f.input :city %>
+	<%= f.input :state %>
+	<%= f.input :zipcode %>
+	<%= f.input :property_type %>
+	<h3> Has which of the following? </h3>
+	<%= f.input :category, label: "Pool"  %>
+	<%= f.input :category, label: "Pets Allowed"  %>
+	<%= f.input :category, label: "Washer/Dryer"  %>
+	<%= f.input :category, label: "Balcony" %>
+	<br/>
+	<br/>
+	<%= f.button :submit, :class => 'btn-custom' %>
+<% end %>
+
