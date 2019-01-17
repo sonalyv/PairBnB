@@ -1,10 +1,13 @@
 <%= simple_form_for(@listing, html: { class: 'form-inline' })do |f| %>
+
+	<%= f.file_field :listing_img%>
 	<%= f.input :name, label: "Listing Title" %>
 	<%= f.input :description %>
 	<%= f.input :address %>
 	<%= f.input :city %>
 	<%= f.input :state %>
 	<%= f.input :zipcode %>
+	<%= f.select :country, options_for_select(Listing.country_list) %>
 	<%= f.input :property_type %>
 	<h3> Has which of the following? </h3>
 	<%= f.input :category, label: "Pool"  %>

@@ -1,9 +1,36 @@
-<h2> <%= @listing.name %> <h2>
-<h3> <%= @listing.address %> <h3>
-<h3> <%= @listing.description %> <h3>
-	
-<%= link_to "Edit", edit_listing_path(@listing) %>
+<h3> <%= link_to "Click Here to Make a Reservation for this Listing", new_listing_reservation_path(@listing.id) %> <br/></h3>
 
-<%= link_to "Delete", listing_path(@listing), method: :delete, data: {confirm: "Are you sure?"} %>
+<h2> <%= @listing.name %> <h2>
+
+<%= image_tag @listing.listing_img.url(:listing_index) %>
+
+<p> <%= @listing.address %> </p>
+<p> <%= @listing.description %> </p>
+	<p> <%= @listing.description %> </p>
+		<p> <%= @listing.address %> </p>
+			<p> <%= @listing.city %> </p>
+				<p> <%= @listing.state %> </p>
+					<p> <%= @listing.zipcode %></p>
+						<p> <%= @listing.country %></p>
+							<p> <%= @listing.property_type %> </p>
+								<p> <%= @listing.category %> </p>
+									<p> Verificiation: <%= @listing.verify %> </p>
 
 <%= link_to "Back", listings_path %>
+
+<% if can? :update, @listing %>
+	<%= link_to "Edit", edit_listing_path(@listing) %>
+<% end %>
+
+<% if can? :destroy, @listing %>
+	<%= link_to "Delete", listing_path(@listing), method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
+
+<% if current_user.admin == true  %>
+	<%= link_to "Verify Listing", verified_listing_path(@listing) %>
+<% end %>
+
+
+
+
+
