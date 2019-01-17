@@ -15,6 +15,7 @@ def checkout
    )
 
   if result.success?
+    @reservation = Reservation.find(params[:reservation_id])
     @reservation.confirmed = true
     @reservation.save
     redirect_to new_user_reservation_payment_path
