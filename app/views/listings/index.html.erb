@@ -1,0 +1,17 @@
+<h2> All Listings </h2>
+<h3> <%= link_to "Add a New Listing", new_listing_path %> </h3>
+
+
+<% @listings.each do |listing| %>
+<a href="/listings/<%= listing.id %>">
+	<%= image_tag listing.listing_img.url(:listing_index), class: "listing" %>
+</a>
+<%end%>
+
+<%= will_paginate @listings %>
+
+
+
+
+
+	

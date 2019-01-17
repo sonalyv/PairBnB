@@ -1,0 +1,14 @@
+<h2> Congratulations, you are headed to </h2>
+
+
+	
+    <%= @listing.city %> </br>
+   	<%= image_tag @listing.listing_img.url(:listing_index), class: "listing" %> <br/>
+
+<h2> Here are your reservation details: </h2>
+<h4> Start Date: <%= @reservation.start_date %> </h4>
+<h4> End Date: <%= @reservation.end_date %> </h4>
+
+
+
+

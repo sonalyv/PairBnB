@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
   include Clearance::Controller
-  before_action :require_login
+  rescue_from CanCan::AccessDenied do |exception|
+   redirect_to listings_url, :alert => exception.message
+  end 
 
-  def index
-    current_user.articles
-  end
 end

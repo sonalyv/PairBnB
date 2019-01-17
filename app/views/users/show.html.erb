@@ -1,0 +1,33 @@
+<h1> Hi ! This is your profile page <%= @user.first_name %> </h1>
+
+<%= image_tag @user.avatar.url(:avatar_show), class: "avatar" %>
+
+
+<h3> <%= link_to "Click here", edit_user_path(@user) %> to edit your profile or to add an image  </a> </h3>
+
+<h2> What would you like to do? </h2>
+
+
+<h3> 1. See all <%= link_to "Listings", listings_path %> <br/>
+2. Make a <%= link_to "New Listing", new_listing_path %> <br/>
+3. Look at your <%= link_to "Pending Reservations", user_reservations_path(user_id: @user.id) %> <br/> 
+3. Look at your <%= link_to "Confirmed Reservations", user_reservations_path(user_id: @user.id) %> <br/> </h3> <br/>
+
+<h3> Here are all your active listings: </h3>
+
+
+
+    <% user_listings = Listing.where(user_id: current_user.id) %>
+
+
+    <% user_listings.each do |listing| %>
+    	<div style=" display: inline-block">
+	    <p><strong><%= listing.name %></strong></p>
+		<%= image_tag listing.listing_img.url(:listing_index), class: "listing" %> <br/>
+        <%= link_to "Edit this listing", edit_listing_path(listing) %>
+      </div>
+
+    <% end %>
+
+  
+    

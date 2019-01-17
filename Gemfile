@@ -3,7 +3,21 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+gem 'carrierwave'
+gem 'cancan'
+gem 'will_paginate', '~> 3.1.0'
+gem 'faker'
+gem 'sprockets'
+gem 'bootstrap-sass', '~> 3.4.0'
+gem 'sassc-rails', '>= 2.0.0'
+gem 'simple_form'
 gem 'clearance'
+gem 'figaro'
+gem 'omniauth-google-oauth2'
+gem 'omniauth'
+gem 'jquery-rails'
+gem 'paperclip'
+gem 'braintree'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
