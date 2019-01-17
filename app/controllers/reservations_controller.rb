@@ -1,5 +1,4 @@
 class ReservationsController < ApplicationController
-  # before_action :find_reservation, only: [:show, :edit, :update, :destroy]
 
 
 def index
@@ -23,6 +22,7 @@ def create
   @reservation.listing_id = @listing.id
   @reservation.user_id = current_user.id
     if @reservation.save
+       ReservationMailer.booking_email(@reservation, current_user).deliver_now
       redirect_to listing_reservation_path(listing_id: @listing.id , id: @reservation.id)
     else
       flash[:message] = "Reservation was not saved"
@@ -51,7 +51,7 @@ end
 private 
 
   def reservation_params
-    params.require(:reservation).permit(:listing_id, :user_id, :start_date, :end_date)
+    params.require(:reservation).permit(:listing_id, :user_id, :start_date, :end_date, :confirmed)
   end
 
 
