@@ -6,7 +6,6 @@ end
 
 def checkout
   nonce_from_the_client = params[:checkout_form][:payment_method_nonce]
-
   result = Braintree::Transaction.sale(
    :amount => "10.00", #this is currently hardcoded
    :payment_method_nonce => nonce_from_the_client,
@@ -16,6 +15,9 @@ def checkout
    )
 
   if result.success?
+    @reservation = Reservation.find(params[:reservation_id])
+    @reservation.confirmed = true
+    @reservation.save
     redirect_to new_user_reservation_payment_path
     flash[:success] = "You are all confirmed!!"
   else

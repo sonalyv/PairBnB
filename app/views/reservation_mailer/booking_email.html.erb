@@ -1,0 +1,28 @@
+<h1>Booking Confirmation</h1>
+
+<p>
+  <%= @greeting %>
+</p>
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Congratulations!</h1>
+    <p>
+      You travel dates are:
+
+<%= @reservation.start_date %>
+<%= @reservation.end_date %>
+
+  Keep in mind that your booking is not confirmed until paid. Proceed to do so.
+  You can see your pending reservations on your profile <a href="<%= @url %>">here</a>
+
+
+    </p>
+  </body>
+</html>
+
