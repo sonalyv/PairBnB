@@ -1,10 +1,9 @@
-Reservation#Mailer
+  Booking confirmation
 
-<%= @greeting %>
-
-Congratulations <%= @user.first_name %>. Your booking is confirmed. 
-
-You travel dates are:
+  Congratulations. Your travel dates are:
 
 <%= @reservation.start_date %>
 <%= @reservation.end_date %>
+
+  Keep in mind that your booking is not confirmed until paid. Proceed to do so.
+  You can see your pending reservations on your profile here: <%= @url %>

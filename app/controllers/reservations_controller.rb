@@ -22,7 +22,8 @@ def create
   @reservation.listing_id = @listing.id
   @reservation.user_id = current_user.id
     if @reservation.save
-       ReservationMailer.booking_email(@reservation, current_user).deliver_now
+       # ReservationMailer.booking_email(@reservation, current_user).deliver_now
+       ReservationJob.perform_later(@reservation, current_user)
       redirect_to listing_reservation_path(listing_id: @listing.id , id: @reservation.id)
     else
       flash[:message] = "Reservation was not saved"
