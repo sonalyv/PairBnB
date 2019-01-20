@@ -1,17 +1,31 @@
-<h2> All Listings </h2>
-<h3> <%= link_to "Add a New Listing", new_listing_path %> </h3>
+
+<div class="d-flex justify-content-center flex-wrap" >
+
+<h2> All Listings  ||  <%= link_to "Add a New Listing", new_listing_path %> <br/> 
 
 
+
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+</nav> </h2>
+
+
+
+
+
+<div class="d-flex justify-content-center flex-wrap" >
 <% @listings.each do |listing| %>
 <a href="/listings/<%= listing.id %>">
 	<%= image_tag listing.listing_img.url(:listing_index), class: "listing" %>
 </a>
 <%end%>
+</div>
 
-<%= will_paginate @listings %>
+<h3> <%= will_paginate @listings %> </h3>
+
+</div>
 
 
-
-
-
-	

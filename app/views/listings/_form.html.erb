@@ -1,8 +1,11 @@
 <%= simple_form_for(@listing, html: { class: 'form-inline' })do |f| %>
 
 	<%= f.file_field :listing_img%>
+	<%= f.input :price %>
 	<%= f.input :name, label: "Listing Title" %>
-	<%= f.input :description %>
+	<%= f.input :bedrooms %>
+	<%= f.input :bathrooms %>
+	<%= f.input :description %>s
 	<%= f.input :address %>
 	<%= f.input :city %>
 	<%= f.input :state %>

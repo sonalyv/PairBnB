@@ -44,6 +44,9 @@ ActiveRecord::Schema.define(version: 2019_01_17_071954) do
     t.datetime "listing_img_updated_at"
     t.boolean "verify"
     t.integer "reservation_id"
+    t.integer "bedrooms"
+    t.integer "bathrooms"
+    t.integer "price"
   end
 
   create_table "reservations", force: :cascade do |t|

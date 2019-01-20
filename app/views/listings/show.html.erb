@@ -2,7 +2,7 @@
 
 <h2> <%= @listing.name %> <h2>
 
-<%= image_tag @listing.listing_img.url(:listing_index) %>
+<%= image_tag @listing.listing_img.url(:listing_index),  class: "listing_show"  %>
 
 <p> <%= @listing.address %> </p>
 <p> <%= @listing.description %> </p>

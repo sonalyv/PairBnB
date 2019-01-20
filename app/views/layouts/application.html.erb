@@ -30,10 +30,10 @@
 
         <ul class="nav navbar-nav navbar-right">
           <% if signed_in? %>
-            <%= link_to t(".sign_out"), sign_out_path, method: :delete %> <br/>
-            <%= link_to t("Profile"), sign_in_path %>
+          <h3>  <%= link_to t(".sign_out"), sign_out_path, method: :delete %>  </h3> 
+           <h3> <%= link_to t("Profile"), sign_in_path %> </h3>
           <% else %>
-            <%= link_to t(".sign_in"), sign_in_path %>
+           <h3>  <%= link_to t(".sign_in"), sign_in_path %> </h3>
           <% end %>
         </ul>
       
@@ -49,8 +49,11 @@
   </div>
   </nav>
 
-
+  <div class="d-flex justify-content-center flex-wrap">
   <%= yield %>
+  </div>
+
+
 
 
 </body>

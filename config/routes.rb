@@ -39,6 +39,8 @@ Rails.application.routes.draw do
 
   post "/users/:user_id/reservations/:reservation_id/checkout" => "payments#checkout", as: "payments_checkout"
 
+  post "/users/:user_id/reservations/:reservation_id/confirmed" => "reservations#index", as: "reservations_confirmed"
+
 
   # constraints Clearance::Constraints::SignedIn.new { |user| user.admin? } do
   #   root to: "admin/dashboards#show", as: :admin_root
