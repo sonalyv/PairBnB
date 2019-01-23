@@ -1,12 +1,19 @@
-<h1> All your pending reservations. Make a payment to confirm the booking. </h1>
 
+
+<h2 style="text-align:center"> See all your reservations below. <br/> <strong> <i> Note that all pending reservations are not confirmed until final checkout. </strong> </i> <br/> 
+Make a payment for any pending reservation to confirm the booking. </h2> <br/>
+
+<div class="d-flex justify-content-center flex-wrap" >
 
  <% @user_reservation.each do |reservation| %>
  	<div style=" display: inline-block" class = "reservation" > 
 	    <p> Start Date: <%= reservation.start_date %> </p>
 	   	<p> End Date: <%= reservation.end_date %> </p>
 	   	<p> <%= reservation.listing.name %> </p>
-	    <%= image_tag reservation.listing.listing_img.url(:listing_index) %> 
+	    <%= image_tag reservation.listing.listing_img.url(:listing_index), class: "listing" %> 
 	    <h3> <%= link_to "Make Payment to Confirm Booking", new_user_reservation_payment_path(current_user.id, reservation.id) %> </h3>
       </div>
  <% end %>
+
+
+ </div>

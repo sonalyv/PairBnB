@@ -3,16 +3,20 @@ class ListingsController < ApplicationController
 
 
 def index
-  @listings = Listing.paginate(:page => params[:page])
+  if params[:search]
+    @listings = Listing.search(params[:search])
+    @listings = Listing.search(params[:search]).paginate(page: params[:page])
+  else
+    @listings = Listing.paginate(:page => params[:page])
+   end 
+end
 
+# @listings = Listing.find(params[:id])
+# @listings = Listing.paginate(:page => params[:page])
+# @listings = Listing.paginate(:page => params[:pßage])
   # ## perform a paginated query:
   # @listing = Listing.paginate(:page => params[:page])
-
-  # or, use an explicit "per page" limit:
-  # Listing.paginate(:page => params[:page], :per_page => 10)  
-
-   # @listings = Listing.all.order("created_at DESC")
-end
+  # @listings = Listing.all.order("created_at DESC")
 
 def new 
   @listing = current_user.listings.build
@@ -64,7 +68,7 @@ end
 private 
 
   def listing_params
-    params.require(:listing).permit(:name, :description, :address, :city, :state, :zipcode, :country, :property_type, :category, :listing_img, :verify)
+    params.require(:listing).permit(:name, :description, :address, :city, :state, :zipcode, :country, :property_type, :category, :listing_img, :verify, :price, :bedrooms, :bathrooms)
   end
 
   def find_listing
