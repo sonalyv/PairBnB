@@ -4,10 +4,11 @@
 
 <%= image_tag @listing.listing_img.url(:listing_index),  class: "listing_show"  %>
 
-<p> <%= @listing.address %> </p>
-<p> <%= @listing.description %> </p>
-	<p> <%= @listing.description %> </p>
-		<p> <%= @listing.address %> </p>
+<p> Address: <%= @listing.address %> </p>
+<p> Price: <%= @listing.price %> </p>
+<p> Bedrooms: <%= @listing.bedrooms %> </p>
+<p> Bathrooms: <%= @listing.bathrooms %> </p>
+<p> Description: <%= @listing.description %> </p>
 			<p> <%= @listing.city %> </p>
 				<p> <%= @listing.state %> </p>
 					<p> <%= @listing.zipcode %></p>

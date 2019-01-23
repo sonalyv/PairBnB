@@ -5,8 +5,8 @@ class User < ApplicationRecord
   has_many :reservations
   has_attached_file :avatar, styles: {avatar_show: "300x300>", avatar_thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
-  
-
+  validates :email, :presence => {message: "Email address cannot be blank."}, email: {message: "Please enter a valid email address."}, :on => :create
+ 
 
   # devise :omniauthable, omniauth_providers: [:google_oauth2]
 

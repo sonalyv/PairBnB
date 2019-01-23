@@ -1,53 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-  
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-
-</head>
-<body class="has-navbar-fixed-top">
-
-</head>
-
-<body>
-
-  <nav class="navbar navbar-default">
-  <div class="container">
-
-      <div class="navbar-header">
-        <%= link_to "AirBnb", root_path, class: "navbar-brand" %>
-      </div>
-
-
 
 <div class="navbar" id="filters-bar">
-
-      <%= form_tag search_index_path, :method => :get  do %>
-              <div class="control has-icons-right">
-                <%= text_field_tag 'search', nil, placeholder: 'Miami, FL', class: 'input', list: "list" %>
-                <datalist id="list"></datalist>
-                <span class="icon is-small is-right">
-                  <i class="fas fa-search fa-lg"></i>
-                </span>
-              </div>
-            <% end %>
-    
 
   <!--City Filter-->
   <div class="dropdown is-hoverable">
@@ -84,14 +36,33 @@
         <%= form_for listings_path, method: :get do %>
           <%= date_field_tag 'check_in'%>
           <%= date_field_tag 'check_out'%>
+          <%= hidden_field(:listing, :dates) %>
           <%= submit_tag("Search") %>        
         <% end %>
       </div>
     </div>
   </div>
   
-
-  
+  <!--Guests Filter-->
+  <div class="dropdown is-hoverable">
+    <div class="dropdown-trigger">
+      <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+        <span>Guests</span>
+        <span class="icon is-small">
+          <i class="fas fa-angle-down" aria-hidden="true"></i>
+        </span>
+      </button>
+    </div>
+    <div class="dropdown-menu" id="dropdown-menu" role="menu">
+      <div class="dropdown-content">
+        <%= form_for listings_path, method: :get do %>
+          <%= text_field_tag 'guests' %>
+          <%= submit_tag("Search") %>        
+        <% end %>
+      </div>
+    </div>
+  </div>
+    
   <!--Bedrooms Filter-->
   <div class="dropdown is-hoverable">
     <div class="dropdown-trigger">
@@ -153,42 +124,3 @@
   </div>
 
 </div>
-
-        <ul class="nav navbar-nav navbar-right">
-          <% if signed_in? %>
-          <h3>  <%= link_to t(".sign_out"), sign_out_path, method: :delete %>  </h3> 
-           <h3> <%= link_to t("Profile"), sign_in_path %> </h3>
-          <% else %>
-           <h3>  <%= link_to t(".sign_in"), sign_in_path %> </h3>
-          <% end %>
-        </ul>
-      
-
-      <div id="flash">
-        <% flash.each do |key, value| %>
-      <div id="flash_<%= key %>"><%=h value %> 
-      </div>
-        <% end %>
-      </div>
-      
-
-  </div>
-  </nav>
-
-
-
-
-  <%= yield %>
-  </div>
-
-
-
-
-</body>
-</html>
-
-
-
-
-
-

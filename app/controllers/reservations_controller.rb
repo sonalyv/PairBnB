@@ -16,6 +16,18 @@ def show
     @reservation.listing_id = @listing.id
 end
 
+
+
+# def dates_confirmation
+#     if current_listing.is_available?(params[:start_date],params[:end_date])
+#       session[:start_date] = params[:start_date]
+#       session[:end_date] = params[:end_date]
+#     else
+#       flash[:message] = "Sorry - some of your dates weren't available."
+#        render 'new'
+#     end 
+# end
+
 def create
   @listing = Listing.find(params[:reservation][:listing_id])
   @reservation = Reservation.new(reservation_params)

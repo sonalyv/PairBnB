@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.3'
 
+gem 'pg_search'
 gem 'bootstrap'
 gem 'sidekiq'
 gem 'carrierwave'

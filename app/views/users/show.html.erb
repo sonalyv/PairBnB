@@ -28,8 +28,7 @@ body {
 
 <h3> 1. See all <%= link_to "Listings", listings_path %> <br/>
 2. Make a <%= link_to "New Listing", new_listing_path %> <br/>
-3. Look at your <%= link_to "Pending Reservations", user_reservations_path(user_id: @user.id) %> <br/> 
-3. Look at your <%= link_to "Confirmed Reservations", user_reservations_path(user_id: @user.id) %> <br/> </h3> <br/>
+3. Look at your <%= link_to "Pending & Confirmed Reservations", user_reservations_path(user_id: @user.id) %> <br/> </h3> <br/>
 
 <h3> Here are all your active listings: </h3>
 

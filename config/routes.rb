@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   end
   end
 
+  resources :search, controller: "search", only: [:index]
+
   resources :passwords, controller: "clearance/passwords", only: [:create, :new] 
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -42,6 +44,7 @@ Rails.application.routes.draw do
   post "/users/:user_id/reservations/:reservation_id/confirmed" => "reservations#index", as: "reservations_confirmed"
 
 
+   post '/search' => 'search#search'
   # constraints Clearance::Constraints::SignedIn.new { |user| user.admin? } do
   #   root to: "admin/dashboards#show", as: :admin_root
   # end
